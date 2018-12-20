@@ -1,0 +1,30 @@
+<div class="container">
+  <div *ngIf="error" class="right-content">
+    <span>Unexpected error occured. Could not fetch exchange rates</span>
+  </div>
+</div>
+
+<div class="container">
+  <div *ngIf="inr2usd" class="right-content padding-ten">
+    <span class="currency-span">Currency</span>
+    <select [(ngModel)]="selectedCurrency" (ngModelChange)="onChange($event)">
+      <option *ngFor="let c of currencyList" [ngValue]="c"> {{c.name}} </option>
+    </select>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div *ngFor="let product of productsList" class="col-sm center-content padding-ten">
+      <div>
+        <img src={{product.url}} />
+      </div>
+      <div>
+        <span>{{product.name}}</span>
+      </div>
+      <div>
+        <span>{{product.price | currency : product.currency}}</span>
+      </div>
+    </div>
+  </div>
+</div>
